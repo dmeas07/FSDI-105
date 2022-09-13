@@ -10,7 +10,7 @@
     <title>User Registratiobn System</title>
 </head>
 <body>
-    <header>
+    <header class="site-header">
         <h1>My awesome user registration system!</h1>
 
         <nav>
@@ -21,8 +21,13 @@
 
     <main>
         <h2>Register a new user</h2>
-
+        <div class="flex-btn">
+        <button class=btn id="show-form">👁️</button>
+        </div>
         <div class="form-container">
+            <div class="flex-btn">
+                <button id="hide-form">❌</button>
+            </div>
             <!-- name, age, gender, address, phone, email, password, color -->
             <div class="input-container">
                 <label>First Name: </label>
@@ -60,7 +65,7 @@
                 <label>Color: </label>
                 <input type="color" id="userColor">
             </div>
-            <div>
+            <div class="input-container">
                 <label>Payment:</label>
                 <select class="selector" id="paymentSelector">
                     <option value="" selected disabled>Select a payment method</option>
@@ -69,7 +74,7 @@
                     <option value="applePay">Apple Pay</option>
                 </select>
             </div>
-            <button onclick="register();" id="reg-button">Register New User</button>
+            <button class="btn" id="btnSave">Register New User</button>
         </div>
     </main>
 
@@ -77,6 +82,7 @@
         
     </footer>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script src="script/storeManager.js"></script>
     <script src="script/register.js"></script>
 </body>
 </html>

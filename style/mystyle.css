@@ -76,3 +76,24 @@ h2{
     color: white;
     cursor: pointer;
 }
+
+table{
+    border-collapse:separate;
+    border:solid black 1px;
+    border-radius:6px;
+    width: auto;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+th,td{
+    border-left:solid black 1px;
+    border-top:solid black 1px;
+}
+
+th{
+    background-color: cornflowerblue;
+    border-top: none; 
+}
+

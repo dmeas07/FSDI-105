@@ -1,4 +1,4 @@
-// add payment method using a slect element on the html element
+// add payment method using a select element on the html element
 
 // object constructor
 function User(firstName, lastName, age, gender, address, phone, email, password, color, payment){// step 3 (defining the format)
@@ -14,17 +14,98 @@ function User(firstName, lastName, age, gender, address, phone, email, password,
     this.payment = payment;
 }
 
-function isValid(aUser){
-    let valid = true;
+// function isValid(aUser){
+//     let valid = true;
 
-    if(aUser.firstName =="" || aUser.lastName ==""|| aUser.age ==""|| aUser.gender ==""|| aUser.address ==""|| aUser.phone ==""|| aUser.email ==""|| aUser.password ==""|| aUser.payment == ""){
+//     if(aUser.firstName =="" || aUser.lastName ==""|| aUser.age ==""|| aUser.gender ==""|| aUser.address ==""|| aUser.phone ==""|| aUser.email ==""|| aUser.password ==""|| aUser.payment == ""){
+//         valid=false;
+//         alert("Please enter the required information");
+//     }
+//     return valid;
+
+// }
+
+function isValid(User){
+    let valid = true;
+    $("input").removeClass("input-error");
+    
+    if(User.firstName==""){
+        valid=false
+        $("#userFirstName").addClass("input-error");
+        console.log("Please enter your First Name");
+    }
+
+    if(User.lastName.length==0){
         valid=false;
-        alert("Please enter the required information");
+        $("#userLastName").addClass("input-error");
+        console.log("Please enter your Last Name");
+    }
+
+    if(User.age.length==0){
+        valid=false;
+        $("#userAge").addClass("input-error");
+        console.log("Please enter your Age");
+    }
+
+    if(User.gender.length==0){
+        valid=false;
+        $("#userGender").addClass("input-error");
+        console.log("Please enter your Gender");
+    }
+
+    if(User.address.length==0){
+        valid=false;
+        $("#userAddress").addClass("input-error");
+        console.log("Please enter your Address");
+    }
+
+    if(User.phone==""){
+        valid=false
+        $("#userPhone").addClass("input-error");
+        console.log("Please enter your Phone Number");
+    }
+
+    if(User.email ==""){
+        valid=false;
+        $("#userEmail").addClass("input-error");
+        console.log("Please enter an E-Mail");
+    }
+
+    if(User.password.length==0){
+        valid=false;
+        $("#userPassword").addClass("input-error");
     }
     return valid;
 
 }
 
+function validatePass(){
+    console.log("Validating Password");
+    let inputPass = $("#userPassword");// getting the input #userPassword
+    let password = inputPass.val();// getting the value
+    if(password.length<6){
+        inputPass.css("background-color","#ff9898");
+        console.log("Password must be at least 6 characters");
+        displayError("Password must be at least 6 characters");
+    }
+
+    else{
+        inputPass.css("background-color","lightgreen");
+        console.log("Format is correct")
+        hideError();
+    }
+   
+
+}
+
+function displayError(msg){
+    $("#alert-error").removeClass("hide").text(msg);
+}
+
+function hideError(){
+    $("#alert-error").addClass("hide");
+
+}
 
 function register(){// step 1
     // getting value from input from the HTML
@@ -45,14 +126,21 @@ function register(){// step 1
     // console.log(aUser);// step 5
     // console.log(txtName, txtAge, txtGender, txtAddress, txtPhone, txtEmail, txtPassword, selColor); // step 2 (this check to see if it works)
     if(isValid(aUser)){
-    saveUser(aUser);
+        hideError();
+        saveUser(aUser);
 
     // clear input using JQuery
-    $("input").val("");
+        $("input").val("");
 
     // $("#hide-form").on("click", function(){
     //     $(".form-container").slideUp(2000);
     // });
+    
+    }
+
+    else{
+        console.log("Please complete all fields");
+        displayError("Please complete all fields");
     }
 
 }
@@ -72,5 +160,7 @@ function init(){
     $("#hide-form").on("click", function(){
         $(".form-container").slideUp(2000);
     });
+
+    $("#userPassword").keyup(validatePass);
 }
 window.onload=init;

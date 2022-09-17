@@ -60,6 +60,7 @@ h2{
     flex-basis: 20%;
     text-align: right;
     margin-right: 1rem;
+    font-size: 15px;
 
 }
 
@@ -97,3 +98,21 @@ th{
     border-top: none; 
 }
 
+.input-error{
+    border: 1px solid red;
+    background-color: peachpuff;
+}
+
+.hide{
+    display: none;
+}
+
+#alert-error{
+    text-align: center;
+    border: 1px solid red;
+    background-color: peachpuff;
+    color: red;
+    padding: 3px;
+    width: auto;
+    margin: 1rem 0 1rem auto;
+}
